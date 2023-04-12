@@ -1,0 +1,377 @@
+import UIKit
+enum ReadingErrors: Error {
+    case tooBoring
+}
+func readBook(isFiction: Bool = true) throws {
+    if isFiction {
+        print("Story time!")
+    } else {
+        throw ReadingErrors.tooBoring
+    }
+}
+
+func doTricks(_ tricks: () -> Void) {
+    print("Start recording now!")
+    tricks()
+    print("Did you get all that?")
+}
+
+
+
+func playSong(_ name: String, notes: () -> String) {
+    print("I'm going to play \(name).")
+    let playedNotes = notes()
+    print(playedNotes)
+}
+playSong("Mary Had a Little Lamb") {
+    return "EDCDEEEDDDEGG"
+}
+
+
+func manipulate(numbers: [Int], using algorithm: (Int) -> Int) {
+    for number in numbers {
+        let result = algorithm(number)
+        print("Manipulating \(number) produced \(result)")
+    }
+}
+manipulate(numbers: [1, 2, 3]) { number in
+    return number * number
+}
+
+func scoreToGrade(score: Int, gradeMapping: (Int) -> String) {
+    print("Your score was \(score)%.")
+    let result = gradeMapping(score)
+    print("That's a \(result).")
+}
+scoreToGrade(score: 80) { (grade: Int) in
+    if grade < 85 {
+        return "Fail"
+    }
+    return ""
+}
+
+func increaseBankBalance(start: Double, interestCalculator: () -> Double) {
+    print("Your current balance is \(start).")
+    let interestRate = interestCalculator()
+    let withInterest = start * interestRate
+    print("You now have \(withInterest).")
+}
+increaseBankBalance(start: 200.0) {
+    return 1.01
+}
+
+//Returning closures from functions
+
+func paintingMaker(medium: String) -> (Int) -> String {
+    if medium == "watercolor" {
+        return { int in
+            "I'm going to paint some \(int) flowers."
+        }
+    } else {
+        return {_ in
+            "I'm going to paint a landscape."
+        }
+    }
+}
+let maker = paintingMaker(medium: "watercolor")
+maker(22)
+
+func storeTwoValues(value1: String, value2: String) -> (String) -> String {
+    var previous = value1
+    var current = value2
+    return { new in
+        let removed = previous
+        previous = current
+        current = new
+        return "Removed \(removed)"
+    }
+}
+let store = storeTwoValues(value1: "Hello", value2: "World")
+let removed = store("Value Three")
+print(removed)
+
+
+
+func findTallest() -> (String, Double) -> (String) {
+    var tallestName = ""
+    var tallestHeight = 0.0
+    return {
+        if $1 > tallestHeight {
+            tallestName = $0
+            tallestHeight = $1
+        }
+        return tallestName
+    }
+}
+let tallest = findTallest()
+var tallestName = tallest("Hannah", 1.72)
+tallestName = tallest("Christina", 1.68)
+
+
+struct Sunglasses {
+    var protectionLevel: Int
+    var visionTest: String {
+        if protectionLevel < 3 {
+            return "These aren't very dark"
+        } else if protectionLevel < 6 {
+            return "These are just right"
+        } else if protectionLevel < 10 {
+            return "Who turned the lights out?"
+        }
+        return ""
+    }
+}
+
+//Property observers
+
+/// Funções dentro de structs são chamadas de métodos
+struct Progress {
+    var task: String
+    var amount: Int {
+        didSet {
+            print("\(task) is now \(amount)% complete")
+        }
+    }
+}
+
+struct FishTank {
+    var capacity: Int
+    var fishCount: Int {
+        didSet {
+            if fishCount > capacity {
+                print("You have too many fish!")
+            }
+        }
+    }
+}
+
+var results = [true, true, false, true]
+results.remove(at: 2)
+results.count == 3
+
+struct Experiment {
+    var cost = 0
+}
+let lhc = Experiment(cost: 13_250_000_000)
+
+
+struct Country {
+    var name: String
+    var usesImperialMeasurements: Bool
+    init(countryName: String) {
+        name = countryName
+        let imperialCountries = ["Liberia", "Myanmar", "USA"]
+        if imperialCountries.contains(name) {
+            usesImperialMeasurements = true
+        } else {
+            usesImperialMeasurements = false
+        }
+    }
+}
+
+// static
+struct Cat {
+    static var allCats = [Cat]()
+    init() {
+        Cat.allCats.append(self)
+    }
+    static func chorus() {
+        for _ in allCats {
+            print("Meow!")
+        }
+    }
+}
+
+struct LegoBrick {
+    static var numberMade = 0
+    var shape: String
+    var color: String
+    init(shape: String, color: String) {
+        self.shape = shape
+        self.color = color
+        LegoBrick.numberMade += 1
+    }
+}
+ 
+
+
+// Class inheritance
+class Vehicle {
+    var wheels: Int
+    init(wheels: Int) {
+        self.wheels = wheels
+    }
+}
+
+class Truck: Vehicle {
+    var goodsCapacity: Int
+    init(wheels: Int, goodsCapacity: Int) {
+        self.goodsCapacity = goodsCapacity
+       /// refence Class Vehicle
+        super.init(wheels: wheels)
+    }
+}
+
+class Food {
+    var name: String
+    var nutritionRating: Int
+    init(name: String, nutritionRating: Int) {
+        self.name = name
+        self.nutritionRating = nutritionRating
+    }
+}
+class Pizza: Food {
+    init() {
+        super.init(name: "Pizza", nutritionRating: 3)
+    }
+}
+
+class Store {
+    func restock() -> String {
+        return "Fill up the empty shelves"
+    }
+}
+class GroceryStore: Store {
+    override func restock() -> String {
+        return "We need to buy more food."
+    }
+}
+let tesco = GroceryStore()
+tesco.restock()
+
+// Mutability
+/// not permision
+class SewingMachine {
+    var itemsMade = 0
+    /*mutating*/ func makeBag(count: Int) {
+        itemsMade += count
+    }
+}
+var machine = SewingMachine()
+machine.makeBag(count: 1)
+
+struct SewingMachine2 {
+    var itemsMade = 0
+    mutating func makeBag(count: Int) {
+        itemsMade += count
+    }
+}
+var machine2 = SewingMachine2()
+machine.makeBag(count: 1)
+
+
+struct Kindergarten {
+    var numberOfScreamingKids = 30
+    mutating func handOutIceCream() {
+        numberOfScreamingKids = 0
+    }
+}
+let kindergarten = Kindergarten()
+/// let not accept mutanti
+//kindergarten.handOutIceCream()
+
+
+//
+protocol Climbable {
+    var height: Double { get set }
+    var gradient: Int { get }
+}
+
+// struct accept protocol
+protocol HasEngine {
+    func startEngine()
+}
+protocol HasTrunk {
+    func openTrunk()
+}
+struct Car: HasEngine, HasTrunk {
+    func startEngine() {
+        <#code#>
+    }
+    
+    func openTrunk() {
+        <#code#>
+    }
+}
+
+/// Optionals are useful when you might not know some information or it might not exist.
+// Optional "?" validation
+var weatherForecast: String? = "sunny"
+if let forecast = weatherForecast {
+    print("The forecast is \(forecast).")
+} else {
+    print("No forecast available.")
+}
+
+var bestScore: Int? = nil
+bestScore = 101
+if bestScore /* ?? Int() */ > 100 {
+	print("You got a high score!")
+} else {
+	print("Better luck next time.")
+}
+
+
+
+// Optional "?" validation
+var weatherForecast: String? = "sunny"
+if let forecast = weatherForecast {
+    print("The forecast is \(forecast).")
+} else {
+    print("No forecast available.")
+}
+
+let album = "Red"
+let albums = ["Reputation", "Red", "1989"]
+if let position = albums.firstIndex(of: album) {
+    print("Found \(album) at position \(position).")
+}
+
+func username(for id: Int?) -> String? {
+    guard let id = id else {
+        return nil
+    }
+    if id == 1989 {
+        return "Taylor Swift"
+    } else {
+        return nil
+    }
+}
+if let user = username(for: 1989) {
+    print("Hello, \(user)!")
+}
+
+var userOptedIn: Bool? = nil
+var optedIn = userOptedIn ?? false
+
+//Optional chaining " ? "
+let names = ["John", "Paul", "George", "Ringo"]
+let beatle = names.first?.uppercased()
+
+let songs: [String]? = [String]()
+let finalSong = songs?.last?.lowercased()
+
+// Failable initializers
+/// "?"
+struct Person {
+    var id: String
+
+    init?(id: String) {
+        if id.count == 9 {
+            self.id = id
+        } else {
+            return nil
+        }
+    }
+}
+
+// TypeCast
+/// convert this
+var hasForcePowers = "true"
+let convertedHasForcePowers = Bool(hasForcePowers)
+
+
+// String Interpolation
+ 
+var name = "Tim McGraw"
+"Your name is \(name)"
