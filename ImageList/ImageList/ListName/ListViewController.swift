@@ -3,8 +3,8 @@ import UIKit
 
 class ListNameViewController: UIViewController {
 
-    var myView: ListNameView?
-    var myModel: ListNameViewModel?
+    private var myView: ListNameView?
+    private var myModel: ListNameViewModel?
     
     override func loadView() {
         super.loadView()
@@ -17,6 +17,8 @@ class ListNameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Project_1"
+        navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .orange
     }
     
