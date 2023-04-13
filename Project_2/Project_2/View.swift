@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol ViewDelegate: AnyObject {
-  func tapOnFlag(tag: Int)
+  func tapOnFlag(btnTag: Int)
   func nextChallenge()
 }
 
@@ -49,11 +49,17 @@ class View: UIView {
     }
     
     @objc func tapOnFlag(_ sender: UIButton) {
-        delegate?.tapOnFlag(tag: sender.tag)
+        delegate?.tapOnFlag(btnTag: sender.tag)
     }
     
     @objc func nextChallenge() {
         delegate?.nextChallenge()
+    }
+    
+    func isEnableBtn(isEnable: Bool) {
+        firstFlagBtn.isEnabled = isEnable
+        secondFlagBtn.isEnabled = isEnable
+        thirdFlagBtn.isEnabled = isEnable
     }
     
     
@@ -145,14 +151,14 @@ extension View {
     }
 
     func configureNextBtnSpecs() {
-        nextBtn.tag = 4
+        nextBtn.tag = 3
         nextBtn.translatesAutoresizingMaskIntoConstraints = false
         nextBtn.setTitle("Próximo", for: .normal)
         nextBtn.backgroundColor = .black
         nextBtn.center = self.center
         nextBtn.contentMode = .scaleAspectFit
 
-        nextBtn.addTarget(self, action: #selector(tapOnFlag), for: .touchUpInside)
+        nextBtn.addTarget(self, action: #selector(nextChallenge), for: .touchUpInside)
     }
 
     func configureNextBtnConstraints() {
