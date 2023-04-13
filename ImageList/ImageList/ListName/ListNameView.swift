@@ -60,6 +60,7 @@ extension ListNameView: UITableViewDelegate, UITableViewDataSource {
         let sslImage = names?[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = sslImage
+        cell.accessoryType = .disclosureIndicator
         
         return cell
     }
