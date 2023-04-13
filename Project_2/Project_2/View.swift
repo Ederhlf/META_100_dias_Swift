@@ -8,108 +8,159 @@
 import Foundation
 import UIKit
 
-class View: UIView {
-    let germanyFlagBtn = UIButton()
-    let franceFlagBtn = UIButton()
-    let russiaFlagBtn = UIButton()
+protocol ViewDelegate: AnyObject {
+  func tapOnFlag(tag: Int)
+  func nextChallenge()
+}
 
+class View: UIView {
+    // MARK: Views
+    var firstFlagBtn = UIButton().specsDefault()
+    var secondFlagBtn = UIButton().specsDefault()
+    var thirdFlagBtn = UIButton().specsDefault()
+    var nextBtn = UIButton()
+    
+    // MARK: Properties
+    var delegate: ViewDelegate?
+    var flagsBtns: [UIButton] = [UIButton]()
+    
+    var flagNames: [String] = [] {
+        didSet {
+            configureFirstFlagBtnLayout()
+            configureSecondFlagBtnLayout()
+            configureThirdFlagBtnLayout()
+        }
+    }
+    
+    // MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureGermanyFlagBtnLayout()
-        configureFranceFlagBtnLayout()
-        configureRussiaFlagBtnLayout()
+        configureNextBtnLayout()
+        flagsBtns += [firstFlagBtn, secondFlagBtn, thirdFlagBtn]
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        nextBtn.layer.cornerRadius = 0.5 * (nextBtn.frame.size.height)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func getImage(name: String) -> UIImage {
-        return UIImage(named: name)!
+    @objc func tapOnFlag(_ sender: UIButton) {
+        delegate?.tapOnFlag(tag: sender.tag)
     }
+    
+    @objc func nextChallenge() {
+        delegate?.nextChallenge()
+    }
+    
+    
 }
 
+// MARK: - First BTN
 extension View {
-    func configureGermanyFlagBtnLayout() {
-        addSubview(germanyFlagBtn)
+    func configureFirstFlagBtnLayout() {
+        addSubview(firstFlagBtn)
         
-        configureGermanyFlagBtnSpecs()
-        configureGermanyFlagBtnConstraints()
+        configureFirstFlagBtnSpecs()
+        configureFirstFlagBtnConstraints()
     }
     
-    func configureGermanyFlagBtnSpecs() {
-        germanyFlagBtn.translatesAutoresizingMaskIntoConstraints = false
-        germanyFlagBtn.setImage(getImage(name: "germany"), for: .normal)
-        germanyFlagBtn.contentMode = .scaleAspectFill
-        germanyFlagBtn.contentHorizontalAlignment = .fill
-        germanyFlagBtn.contentVerticalAlignment = .fill
-        germanyFlagBtn.imageEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 20)
-
+    func configureFirstFlagBtnSpecs() {
+        firstFlagBtn.tag = 0
+        firstFlagBtn.setImage(UIImage(named: flagNames[0]), for: .normal)
+        firstFlagBtn.translatesAutoresizingMaskIntoConstraints = false
+        firstFlagBtn.addTarget(self, action: #selector(tapOnFlag), for: .touchUpInside)
     }
     
-    func configureGermanyFlagBtnConstraints() {
+    func configureFirstFlagBtnConstraints() {
         NSLayoutConstraint.activate([
-            germanyFlagBtn.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
-            germanyFlagBtn.leftAnchor.constraint(equalTo: leftAnchor, constant: 100),
-            germanyFlagBtn.rightAnchor.constraint(equalTo: rightAnchor, constant: -100)
+            firstFlagBtn.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
+            firstFlagBtn.leftAnchor.constraint(equalTo: leftAnchor, constant: 100),
+            firstFlagBtn.rightAnchor.constraint(equalTo: rightAnchor, constant: -100)
         ])
     }
 }
 
-// MARK France BTN
+// MARK: - Second BTN
 extension View {
-    func configureFranceFlagBtnLayout() {
-        addSubview(franceFlagBtn)
+    func configureSecondFlagBtnLayout() {
+        addSubview(secondFlagBtn)
         
-        configureFranceFlagBtnSpecs()
-        configureFranceFlagBtnConstraints()
+        configureSecondFlagBtnSpecs()
+        configureSecondFlagBtnConstraints()
     }
     
-    func configureFranceFlagBtnSpecs() {
-        franceFlagBtn.translatesAutoresizingMaskIntoConstraints = false
-        franceFlagBtn.setImage(getImage(name: "france"), for: .normal)
-        franceFlagBtn.layer.cornerRadius = 10
-        franceFlagBtn.layer.borderWidth = 10
-        franceFlagBtn.layer.borderColor = UIColor.white.cgColor
-        franceFlagBtn.contentMode = .scaleAspectFill
-        franceFlagBtn.contentHorizontalAlignment = .fill
-        franceFlagBtn.contentVerticalAlignment = .fill
-        franceFlagBtn.imageEdgeInsets = UIEdgeInsets(top: 10, left: 8, bottom: 10, right: 8)
-
+    func configureSecondFlagBtnSpecs() {
+        secondFlagBtn.tag = 1
+        secondFlagBtn.setImage(UIImage(named: flagNames[1]), for: .normal)
+        secondFlagBtn.translatesAutoresizingMaskIntoConstraints = false
+        secondFlagBtn.addTarget(self, action: #selector(tapOnFlag), for: .touchUpInside)
     }
     
-    func configureFranceFlagBtnConstraints() {
+    func configureSecondFlagBtnConstraints() {
         NSLayoutConstraint.activate([
-            franceFlagBtn.topAnchor.constraint(equalTo: germanyFlagBtn.bottomAnchor, constant: 20),
-            franceFlagBtn.leftAnchor.constraint(equalTo: leftAnchor, constant: 100),
-            franceFlagBtn.rightAnchor.constraint(equalTo: rightAnchor, constant: -100)
+            secondFlagBtn.topAnchor.constraint(equalTo: firstFlagBtn.bottomAnchor, constant: 20),
+            secondFlagBtn.leftAnchor.constraint(equalTo: leftAnchor, constant: 100),
+            secondFlagBtn.rightAnchor.constraint(equalTo: rightAnchor, constant: -100)
         ])
     }
 }
 
+// MARK: - Third BTN
 extension View {
-    func configureRussiaFlagBtnLayout() {
-        addSubview(russiaFlagBtn)
+    func configureThirdFlagBtnLayout() {
+        addSubview(thirdFlagBtn)
 
-        configureRussiaFlagBtnSpecs()
-        configureRussiaFlagBtnConstraints()
+        configureThirdFlagBtnSpecs()
+        configureThirdFlagBtnConstraints()
     }
 
-    func configureRussiaFlagBtnSpecs() {
-        russiaFlagBtn.translatesAutoresizingMaskIntoConstraints = false
-        russiaFlagBtn.setImage(getImage(name: "russia"), for: .normal)
-        russiaFlagBtn.contentMode = .scaleAspectFill
-        russiaFlagBtn.contentHorizontalAlignment = .fill
-        russiaFlagBtn.contentVerticalAlignment = .fill
-        russiaFlagBtn.imageEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 20)
-
+    func configureThirdFlagBtnSpecs() {
+        thirdFlagBtn.tag = 2
+        thirdFlagBtn.setImage(UIImage(named: flagNames[2]), for: .normal)
+        thirdFlagBtn.translatesAutoresizingMaskIntoConstraints = false
+        thirdFlagBtn.addTarget(self, action: #selector(tapOnFlag), for: .touchUpInside)
+        
     }
 
-    func configureRussiaFlagBtnConstraints() {
+    func configureThirdFlagBtnConstraints() {
         NSLayoutConstraint.activate([
-            russiaFlagBtn.topAnchor.constraint(equalTo: franceFlagBtn.bottomAnchor, constant: 20),
-            russiaFlagBtn.leftAnchor.constraint(equalTo: leftAnchor, constant: 100),
-            russiaFlagBtn.rightAnchor.constraint(equalTo: rightAnchor, constant: -100)
+            thirdFlagBtn.topAnchor.constraint(equalTo: secondFlagBtn.bottomAnchor, constant: 20),
+            thirdFlagBtn.leftAnchor.constraint(equalTo: leftAnchor, constant: 100),
+            thirdFlagBtn.rightAnchor.constraint(equalTo: rightAnchor, constant: -100)
+        ])
+    }
+}
+
+// MARK: - Next BTN
+extension View {
+    func configureNextBtnLayout() {
+        addSubview(nextBtn)
+
+        configureNextBtnSpecs()
+        configureNextBtnConstraints()
+    }
+
+    func configureNextBtnSpecs() {
+        nextBtn.tag = 4
+        nextBtn.translatesAutoresizingMaskIntoConstraints = false
+        nextBtn.setTitle("Próximo", for: .normal)
+        nextBtn.backgroundColor = .black
+        nextBtn.center = self.center
+        nextBtn.contentMode = .scaleAspectFit
+
+        nextBtn.addTarget(self, action: #selector(tapOnFlag), for: .touchUpInside)
+    }
+
+    func configureNextBtnConstraints() {
+        NSLayoutConstraint.activate([
+            nextBtn.topAnchor.constraint(equalTo: nextBtn.bottomAnchor, constant: -140),
+            nextBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -100),
+            nextBtn.leftAnchor.constraint(equalTo: centerXAnchor, constant: -70),
+            nextBtn.rightAnchor.constraint(equalTo: centerXAnchor, constant: 70)
         ])
     }
 }
