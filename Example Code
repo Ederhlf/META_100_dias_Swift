@@ -1,4 +1,7 @@
 import UIKit
+//A estrutura de interface de usuário da Apple é chamada de UIKit.
+// controladores de exibição , controladores de exibição
+
 enum ReadingErrors: Error {
     case tooBoring
 }

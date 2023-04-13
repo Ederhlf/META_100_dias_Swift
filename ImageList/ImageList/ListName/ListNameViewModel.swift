@@ -1,17 +1,10 @@
-//
-//  ViewModel.swift
-//  ImageList
-//
-//  Created by franklin gaspar on 12/04/23.
-//
 
 import Foundation
 
-class ViewModel {
+class ListNameViewModel {
     
-    
-    func imageList() -> [String] {
-        var list1: [String] = []
+    func getImageNameList() -> [String] {
+        var listName: [String] = []
         
         let fm = FileManager.default
         let path = Bundle.main.resourcePath!
@@ -20,9 +13,9 @@ class ViewModel {
 
         for item in items {
             if item.hasPrefix("Quisviker") {
-                list1.append(item)
+                listName.append(item)
             }
         }
-        return list1
+        return listName
     }
 }

@@ -9,29 +9,31 @@
 /* Begin PBXBuildFile section */
 		96B749B029E7508B00F0D4D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B749AF29E7508B00F0D4D8 /* AppDelegate.swift */; };
 		96B749B229E7508B00F0D4D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B749B129E7508B00F0D4D8 /* SceneDelegate.swift */; };
-		96B749B429E7508B00F0D4D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B749B329E7508B00F0D4D8 /* ViewController.swift */; };
+		96B749B429E7508B00F0D4D8 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B749B329E7508B00F0D4D8 /* ListViewController.swift */; };
 		96B749BA29E7508B00F0D4D8 /* ImageList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 96B749B829E7508B00F0D4D8 /* ImageList.xcdatamodeld */; };
 		96B749BC29E7508E00F0D4D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96B749BB29E7508E00F0D4D8 /* Assets.xcassets */; };
-		96B749CA29E753EF00F0D4D8 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B749C929E753EE00F0D4D8 /* View.swift */; };
-		96B749CF29E7577D00F0D4D8 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B749CE29E7577D00F0D4D8 /* ViewModel.swift */; };
+		96B749CA29E753EF00F0D4D8 /* ListNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B749C929E753EE00F0D4D8 /* ListNameView.swift */; };
+		96B749CF29E7577D00F0D4D8 /* ListNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B749CE29E7577D00F0D4D8 /* ListNameViewModel.swift */; };
 		96B749D629E76C9300F0D4D8 /* Quisviker-black.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 96B749D329E76C9300F0D4D8 /* Quisviker-black.jpg */; };
 		96B749D729E76C9300F0D4D8 /* Quisviker-orange.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 96B749D429E76C9300F0D4D8 /* Quisviker-orange.jpg */; };
 		96B749D829E76C9300F0D4D8 /* Quisviker-purple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 96B749D529E76C9300F0D4D8 /* Quisviker-purple.jpg */; };
+		96B749E029E77A1A00F0D4D8 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B749DF29E77A1A00F0D4D8 /* PhotoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		96B749AC29E7508B00F0D4D8 /* ImageList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageList.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		96B749AC29E7508B00F0D4D8 /* Project_1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project_1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96B749AF29E7508B00F0D4D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96B749B129E7508B00F0D4D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		96B749B329E7508B00F0D4D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		96B749B329E7508B00F0D4D8 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		96B749B929E7508B00F0D4D8 /* ImageList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ImageList.xcdatamodel; sourceTree = "<group>"; };
 		96B749BB29E7508E00F0D4D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96B749C029E7508E00F0D4D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		96B749C929E753EE00F0D4D8 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		96B749CE29E7577D00F0D4D8 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		96B749C929E753EE00F0D4D8 /* ListNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNameView.swift; sourceTree = "<group>"; };
+		96B749CE29E7577D00F0D4D8 /* ListNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNameViewModel.swift; sourceTree = "<group>"; };
 		96B749D329E76C9300F0D4D8 /* Quisviker-black.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Quisviker-black.jpg"; sourceTree = "<group>"; };
 		96B749D429E76C9300F0D4D8 /* Quisviker-orange.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Quisviker-orange.jpg"; sourceTree = "<group>"; };
 		96B749D529E76C9300F0D4D8 /* Quisviker-purple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Quisviker-purple.jpg"; sourceTree = "<group>"; };
+		96B749DF29E77A1A00F0D4D8 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +58,7 @@
 		96B749AD29E7508B00F0D4D8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				96B749AC29E7508B00F0D4D8 /* ImageList.app */,
+				96B749AC29E7508B00F0D4D8 /* Project_1.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,10 +68,9 @@
 			children = (
 				96B749AF29E7508B00F0D4D8 /* AppDelegate.swift */,
 				96B749B129E7508B00F0D4D8 /* SceneDelegate.swift */,
-				96B749B329E7508B00F0D4D8 /* ViewController.swift */,
-				96B749C929E753EE00F0D4D8 /* View.swift */,
-				96B749CE29E7577D00F0D4D8 /* ViewModel.swift */,
-				96B749D129E76C3200F0D4D8 /* Images */,
+				96B749DE29E779B400F0D4D8 /* GetIamge */,
+				96B749DD29E7796900F0D4D8 /* ListName */,
+				96B749D129E76C3200F0D4D8 /* Content */,
 				96B749BB29E7508E00F0D4D8 /* Assets.xcassets */,
 				96B749C029E7508E00F0D4D8 /* Info.plist */,
 				96B749B829E7508B00F0D4D8 /* ImageList.xcdatamodeld */,
@@ -77,22 +78,40 @@
 			path = ImageList;
 			sourceTree = "<group>";
 		};
-		96B749D129E76C3200F0D4D8 /* Images */ = {
+		96B749D129E76C3200F0D4D8 /* Content */ = {
 			isa = PBXGroup;
 			children = (
 				96B749D329E76C9300F0D4D8 /* Quisviker-black.jpg */,
 				96B749D429E76C9300F0D4D8 /* Quisviker-orange.jpg */,
 				96B749D529E76C9300F0D4D8 /* Quisviker-purple.jpg */,
 			);
-			path = Images;
+			path = Content;
+			sourceTree = "<group>";
+		};
+		96B749DD29E7796900F0D4D8 /* ListName */ = {
+			isa = PBXGroup;
+			children = (
+				96B749B329E7508B00F0D4D8 /* ListViewController.swift */,
+				96B749C929E753EE00F0D4D8 /* ListNameView.swift */,
+				96B749CE29E7577D00F0D4D8 /* ListNameViewModel.swift */,
+			);
+			path = ListName;
+			sourceTree = "<group>";
+		};
+		96B749DE29E779B400F0D4D8 /* GetIamge */ = {
+			isa = PBXGroup;
+			children = (
+				96B749DF29E77A1A00F0D4D8 /* PhotoViewController.swift */,
+			);
+			path = GetIamge;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		96B749AB29E7508B00F0D4D8 /* ImageList */ = {
+		96B749AB29E7508B00F0D4D8 /* Project_1 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 96B749C329E7508F00F0D4D8 /* Build configuration list for PBXNativeTarget "ImageList" */;
+			buildConfigurationList = 96B749C329E7508F00F0D4D8 /* Build configuration list for PBXNativeTarget "Project_1" */;
 			buildPhases = (
 				96B749A829E7508B00F0D4D8 /* Sources */,
 				96B749A929E7508B00F0D4D8 /* Frameworks */,
@@ -102,9 +121,9 @@
 			);
 			dependencies = (
 			);
-			name = ImageList;
+			name = Project_1;
 			productName = ImageList;
-			productReference = 96B749AC29E7508B00F0D4D8 /* ImageList.app */;
+			productReference = 96B749AC29E7508B00F0D4D8 /* Project_1.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -121,7 +140,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 96B749A729E7508B00F0D4D8 /* Build configuration list for PBXProject "ImageList" */;
+			buildConfigurationList = 96B749A729E7508B00F0D4D8 /* Build configuration list for PBXProject "Project_1" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -134,7 +153,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				96B749AB29E7508B00F0D4D8 /* ImageList */,
+				96B749AB29E7508B00F0D4D8 /* Project_1 */,
 			);
 		};
 /* End PBXProject section */
@@ -158,11 +177,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96B749B429E7508B00F0D4D8 /* ViewController.swift in Sources */,
+				96B749B429E7508B00F0D4D8 /* ListViewController.swift in Sources */,
 				96B749BA29E7508B00F0D4D8 /* ImageList.xcdatamodeld in Sources */,
-				96B749CA29E753EF00F0D4D8 /* View.swift in Sources */,
+				96B749CA29E753EF00F0D4D8 /* ListNameView.swift in Sources */,
 				96B749B029E7508B00F0D4D8 /* AppDelegate.swift in Sources */,
-				96B749CF29E7577D00F0D4D8 /* ViewModel.swift in Sources */,
+				96B749E029E77A1A00F0D4D8 /* PhotoViewController.swift in Sources */,
+				96B749CF29E7577D00F0D4D8 /* ListNameViewModel.swift in Sources */,
 				96B749B229E7508B00F0D4D8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,7 +347,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		96B749A729E7508B00F0D4D8 /* Build configuration list for PBXProject "ImageList" */ = {
+		96B749A729E7508B00F0D4D8 /* Build configuration list for PBXProject "Project_1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				96B749C129E7508E00F0D4D8 /* Debug */,
@@ -336,7 +356,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		96B749C329E7508F00F0D4D8 /* Build configuration list for PBXNativeTarget "ImageList" */ = {
+		96B749C329E7508F00F0D4D8 /* Build configuration list for PBXNativeTarget "Project_1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				96B749C429E7508F00F0D4D8 /* Debug */,

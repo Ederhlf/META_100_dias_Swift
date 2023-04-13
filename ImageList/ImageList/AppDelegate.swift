@@ -1,9 +1,3 @@
-//
-//  AppDelegate.swift
-//  ImageList
-//
-//  Created by franklin gaspar on 12/04/23.
-//
 
 import UIKit
 import CoreData
@@ -15,7 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let vc = ViewController()
+        let vc =  UINavigationController(rootViewController: ListNameViewController())
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = vc
         window?.makeKeyAndVisible()

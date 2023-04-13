@@ -1,27 +1,28 @@
-//
-//  View.swift
-//  ImageList
-//
-//  Created by franklin gaspar on 12/04/23.
-//
 
 import Foundation
 import UIKit
 
-class View: UIView {
-    
+protocol ViewDelegate: AnyObject {
+    func selectedView(imageName: String)
+}
+
+class ListNameView: UIView {
+    // MArK: Views
     let tableView = UITableView()
-  
-    var imageList: [String]? {
+    
+    // MARK: Properties
+    var delegate: ViewDelegate?
+    var names: [String]? {
         didSet {
             tableView.reloadData()
         }
     }
     
+    // MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         confiureTableView()
-        configureLayout()
+        configureTableViewLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -35,7 +36,7 @@ class View: UIView {
         tableView.tableFooterView = UIView(frame: .zero)
     }
     
-    func configureLayout() {
+    func configureTableViewLayout() {
         addSubview(tableView)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -49,17 +50,23 @@ class View: UIView {
     }
 }
 
-
-extension View: UITableViewDelegate, UITableViewDataSource {
+// MARK:-DeLegate
+extension ListNameView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return imageList?.count ?? 0
+        return names?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let sslImage = imageList?[indexPath.row]
+        let sslImage = names?[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = sslImage
         
         return cell
+    }
+   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let nameSelected = names?[indexPath.row]
+
+        delegate?.selectedView(imageName: nameSelected!)
     }
 }
