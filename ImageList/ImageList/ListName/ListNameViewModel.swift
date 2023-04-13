@@ -1,6 +1,6 @@
 
 import Foundation
-
+import UIKit
 class ListNameViewModel {
     
     func getImageNameList() -> [String] {
@@ -16,6 +16,7 @@ class ListNameViewModel {
                 listName.append(item)
             }
         }
-        return listName
+        let sorted = listName.sorted{$0 < $1}
+        return sorted
     }
 }

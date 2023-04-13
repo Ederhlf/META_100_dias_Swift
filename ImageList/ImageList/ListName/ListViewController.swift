@@ -25,8 +25,7 @@ class ListNameViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         myView?.names = myModel?.getImageNameList()
-    }
-
+    }    
 }
 
 extension ListNameViewController: ViewDelegate {
