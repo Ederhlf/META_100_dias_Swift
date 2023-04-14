@@ -1,9 +1,3 @@
-//
-//  SceneDelegate.swift
-//  Project_2
-//
-//  Created by franklin gaspar on 12/04/23.
-//
 
 import UIKit
 

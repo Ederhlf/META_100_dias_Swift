@@ -1,9 +1,3 @@
-//
-//  View.swift
-//  Project_2
-//
-//  Created by franklin gaspar on 13/04/23.
-//
 
 import Foundation
 import UIKit

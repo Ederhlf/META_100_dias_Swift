@@ -1,9 +1,3 @@
-//
-//  ViewController.swift
-//  Project_2
-//
-//  Created by franklin gaspar on 12/04/23.
-//
 
 import UIKit
 
@@ -24,13 +18,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        let label = UILabel(frame: CGRect(x: 10, y: 0, width: 10, height: 20))
-        label.text = "Test"
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "0/10", style: .plain, target: nil, action: nil)
         navigationItem.leftBarButtonItem?.tintColor = .black
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Gain", style: .plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Score: 0", style: .plain, target: nil, action: nil)
         navigationItem.rightBarButtonItem?.tintColor = .black
         myView?.flagNames = myModel!.countriesNames
         randomTitle()
@@ -45,13 +37,20 @@ class ViewController: UIViewController {
 
 extension ViewController: ViewDelegate {
     func nextChallenge() {
-        myModel?.clearborderColor(btn: myView!.firstFlagBtn)
-        myModel?.clearborderColor(btn: myView!.secondFlagBtn)
-        myModel?.clearborderColor(btn: myView!.thirdFlagBtn)
-        myView?.isEnableBtn(isEnable: true)
-        
-        myView?.flagNames.shuffle()
-        randomTitle()
+        if myModel?.numberOfAttempts == 10 {
+            myModel?.alertChallengeFinished(vc: self) {
+                self.navigationItem.leftBarButtonItem?.title = "\(self.myModel!.score)/10"
+                self.navigationItem.rightBarButtonItem?.title = "Score: \(self.myModel!.score)"
+            }
+        } else {
+            myModel?.clearborderColor(btn: myView!.firstFlagBtn)
+            myModel?.clearborderColor(btn: myView!.secondFlagBtn)
+            myModel?.clearborderColor(btn: myView!.thirdFlagBtn)
+            myView?.isEnableBtn(isEnable: true)
+            
+            myView?.flagNames.shuffle()
+            randomTitle()
+        }
     }
     
     func tapOnFlag(btnTag: Int) {
@@ -71,11 +70,20 @@ extension ViewController: ViewDelegate {
             }
         }
         
-        myModel?.checkButtonTag(tag: btnTag, random: currentTag!) {
-            myModel?.alertViewController(vc: self) {
-                self.navigationItem.leftBarButtonItem?.title = "\(self.myModel?.amountTap(item: +1) ?? Int())/10"
-
+        myModel?.checkButtonTag(tag: btnTag, random: currentTag!) { bool in
+            if bool {
+                myModel?.alertries(vc: self, message: "Parabéns, voce acertou: +1") {
+                self.navigationItem.leftBarButtonItem?.title = "\(self.myModel?.sum(sequence: +1) ?? Int())/10"
+                self.navigationItem.rightBarButtonItem?.title = "Score: \(self.myModel!.score)"
+                }
+           
+            } else  {
+                myModel?.alertries(vc: self, message: "Bandeira errada: -1") {
+                self.navigationItem.leftBarButtonItem?.title = "\(self.myModel?.sum(sequence: +1) ?? Int())/10"
+                self.navigationItem.rightBarButtonItem?.title = "Score: \(self.myModel!.score)"
+                }
             }
         }
     }
 }
+
