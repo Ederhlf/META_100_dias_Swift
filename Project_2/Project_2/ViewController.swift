@@ -64,9 +64,9 @@ extension ViewController: ViewDelegate {
                 myModel?.selectedFlagReaction(btn: selecteBtn!, selected: true)
                 
             } else if btnTag != currentTag {
-                let selecteBtn = myView?.flagsBtns[number]
+                let notSelecteBtn = myView?.flagsBtns[number]
                 
-                myModel?.selectedFlagReaction(btn: selecteBtn!, selected: false)
+                myModel?.selectedFlagReaction(btn: notSelecteBtn!, selected: false)
             }
         }
         
