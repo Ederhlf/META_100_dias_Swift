@@ -378,3 +378,20 @@ let convertedHasForcePowers = Bool(hasForcePowers)
  
 var name = "Tim McGraw"
 "Your name is \(name)"
+
+// Grand Central Dispatch, or GCD
+// Esses processos de execução de código são chamados de threads e vêm com várias ressalvas importantes:
+
+//Threads executam o código que você dá a eles, eles não apenas executam aleatoriamente 
+//algumas linhas de viewDidLoad()cada um. Isso significa que, por padrão, seu próprio 
+//código é executado em apenas uma CPU, porque você não criou threads para outras CPUs 
+//trabalharem.
+
+// outra maneira de usar o GCD e vale a pena abordá-la porque é muito mais fácil em
+// algumas circunstâncias específicas. Chama-se performSelector(), e tem duas variantes 
+// interessantes: performSelector(inBackground:)e performSelector(onMainThread:).
+//. GCD cuida de criar, agendar e destruir threads automaticamente.
+// Nenhum código de interface do usuário deve ser executado em um thread em segundo plano.
+
+
+
