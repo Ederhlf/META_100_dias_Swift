@@ -1,9 +1,3 @@
-//
-//  SceneDelegate.swift
-//  Challenge_41_Days
-//
-//  Created by franklin gaspar on 03/05/23.
-//
 
 import UIKit
 
@@ -14,8 +8,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        let vc = UINavigationController(rootViewController: ViewController())
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = ViewController()
+        window?.rootViewController = vc
         window?.windowScene = windowScene
         window?.makeKeyAndVisible()
     }

@@ -37,7 +37,7 @@ class DetailViewController: UIViewController {
         configureImageViewLayout()
     }
     
-    // Action
+    // Action compartilhamento
     @objc func shareTaped() {
         guard let image = imageView.image?.jpegData(compressionQuality: 0.8) else {return}
         let vc = UIActivityViewController(activityItems: [imageName!, image], applicationActivities: [])

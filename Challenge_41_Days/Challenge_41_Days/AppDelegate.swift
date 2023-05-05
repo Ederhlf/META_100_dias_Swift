@@ -1,9 +1,3 @@
-//
-//  AppDelegate.swift
-//  Challenge_41_Days
-//
-//  Created by franklin gaspar on 03/05/23.
-//
 
 import UIKit
 import CoreData
