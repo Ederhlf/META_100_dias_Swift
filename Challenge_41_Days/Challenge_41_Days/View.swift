@@ -12,6 +12,8 @@ class View: UIView {
     let letterTextField = UITextField()
     let squareView = UIView()
     var labels = [UILabel]()
+    var squareAmount = [UIView]()
+
     weak var delegate: ViewDelegate?
     var errorScore = 0
     var letters: String?
@@ -32,7 +34,7 @@ class View: UIView {
         letters = words.randomElement()
         letterTextField.delegate = self
         configureSquareView()
-        configureSquareTextView()
+        configureSquaresView()
         configureTextField()
         configurecCheckButtonLayout()
     }
@@ -83,7 +85,7 @@ extension View {
     
     private  func configureSquareViewSpecs() {
         squareView.translatesAutoresizingMaskIntoConstraints = false
-        squareView.backgroundColor = .red
+        squareView.backgroundColor = .clear
     }
     
     private func configureSquareViewConstraints() {
@@ -98,7 +100,7 @@ extension View {
 
 // MARK: SeparatorView
 extension View {
-    private func configureSView(addSubView: UIView) {
+    private func configureSeparatorView(addSubView: UIView) {
         let separatorView = UIView()
         
         addSubView.addSubview(separatorView)
@@ -148,12 +150,13 @@ extension View {
         letterTextField.layer.borderColor = UIColor.black.cgColor
         letterTextField.layer.borderWidth = 3
         letterTextField.font = .systemFont(ofSize: 30)
+        letterTextField.textAlignment = .center
         letterTextField.text?.lowercased()
     }
     
     private func configureTextFieldConstraints() {
         NSLayoutConstraint.activate([
-            letterTextField.topAnchor.constraint(equalTo: squareView.bottomAnchor, constant:  20),
+            letterTextField.topAnchor.constraint(equalTo: squareView.bottomAnchor, constant:  10),
             letterTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
             letterTextField.heightAnchor.constraint(equalToConstant: 60),
             letterTextField.widthAnchor.constraint(equalToConstant: 60)
@@ -179,7 +182,7 @@ extension View {
     
     private func configureCheckButtonConstraints() {
         NSLayoutConstraint.activate([
-            checkLetterButton.topAnchor.constraint(equalTo: letterTextField.bottomAnchor, constant:  20),
+            checkLetterButton.topAnchor.constraint(equalTo: letterTextField.bottomAnchor, constant:  10),
             checkLetterButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             checkLetterButton.heightAnchor.constraint(equalToConstant: 60),
             checkLetterButton.widthAnchor.constraint(equalToConstant: 300)
@@ -187,16 +190,15 @@ extension View {
     }
 }
 
-
+// Squares
 extension View {
-    func configureSquareTextView() {
+    func configureSquaresView() {
         let heigth = 59
         let width = 59
         var frame: CGRect?
         var status = 2
         var number = 0
         let lettersAmount = letters?.components(separatedBy: .whitespaces)
-        
         for row in 0...1 {
             for col in 0...4 {
                 
@@ -210,17 +212,20 @@ extension View {
                 }
                 
         guard number < lettersAmount!.count else { return }
-        let squareView = UIView()
-        squareView.backgroundColor = .white
-        squareView.frame = frame!
-        
-        self.squareView.addSubview(squareView)
-        configureSView(addSubView: squareView)
-        let labelView  = configureCharacterLabel(addSubView: squareView, characterString: "?")
-        labels.append(labelView)
-        number += 1
-                
+            let squareViewLetters = UIView()
+            squareViewLetters.backgroundColor = .white
+            squareViewLetters.frame = frame!
+            let labelView  = configureCharacterLabel(addSubView: squareViewLetters, characterString: "?")
+
+            self.squareView.addSubview(squareViewLetters)
+            configureSeparatorView(addSubView: squareViewLetters)
+            labels.append(labelView)
+            squareAmount.append(squareViewLetters)
+            number += 1
+
             }
+            squareView.setNeedsDisplay()
+            squareView.layoutIfNeeded()
         }
     }
 }

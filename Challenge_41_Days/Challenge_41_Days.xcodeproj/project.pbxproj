@@ -15,6 +15,7 @@
 		96D741762A02F8FD005A0B51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96D741752A02F8FD005A0B51 /* Assets.xcassets */; };
 		96D741792A02F8FD005A0B51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96D741772A02F8FD005A0B51 /* LaunchScreen.storyboard */; };
 		96D741832A0320CB005A0B51 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D741822A0320CB005A0B51 /* View.swift */; };
+		96D7418E2A082E6D005A0B51 /* VIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D7418D2A082E6D005A0B51 /* VIewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		96D741782A02F8FD005A0B51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		96D7417A2A02F8FD005A0B51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96D741822A0320CB005A0B51 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		96D7418D2A082E6D005A0B51 /* VIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				96D741692A02F8FB005A0B51 /* AppDelegate.swift */,
 				96D7416B2A02F8FB005A0B51 /* SceneDelegate.swift */,
 				96D7416D2A02F8FB005A0B51 /* ViewController.swift */,
+				96D7418D2A082E6D005A0B51 /* VIewModel.swift */,
 				96D741822A0320CB005A0B51 /* View.swift */,
 				96D7416F2A02F8FB005A0B51 /* Main.storyboard */,
 				96D741752A02F8FD005A0B51 /* Assets.xcassets */,
@@ -147,6 +150,7 @@
 				96D741742A02F8FB005A0B51 /* Challenge_41_Days.xcdatamodeld in Sources */,
 				96D741832A0320CB005A0B51 /* View.swift in Sources */,
 				96D7416A2A02F8FB005A0B51 /* AppDelegate.swift in Sources */,
+				96D7418E2A082E6D005A0B51 /* VIewModel.swift in Sources */,
 				96D7416C2A02F8FB005A0B51 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
