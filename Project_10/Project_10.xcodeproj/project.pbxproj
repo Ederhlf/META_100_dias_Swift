@@ -14,6 +14,7 @@
 		96D741A92A09C8E3005A0B51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96D741A82A09C8E3005A0B51 /* Assets.xcassets */; };
 		96D741B62A09CAAB005A0B51 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D741B52A09CAAB005A0B51 /* PersonCell.swift */; };
 		96D741DA2A09E3E4005A0B51 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D741D92A09E3E4005A0B51 /* View.swift */; };
+		96D742492A0B45D0005A0B51 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D742482A0B45D0005A0B51 /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		96D741AD2A09C8E3005A0B51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96D741B52A09CAAB005A0B51 /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 		96D741D92A09E3E4005A0B51 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		96D742482A0B45D0005A0B51 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,20 +64,13 @@
 				96D7419E2A09C8DF005A0B51 /* SceneDelegate.swift */,
 				96D741A02A09C8DF005A0B51 /* ViewController.swift */,
 				96D741D92A09E3E4005A0B51 /* View.swift */,
-				96D741D82A09E3D7005A0B51 /* New Group */,
+				96D742482A0B45D0005A0B51 /* Person.swift */,
 				96D741B52A09CAAB005A0B51 /* PersonCell.swift */,
 				96D741A82A09C8E3005A0B51 /* Assets.xcassets */,
 				96D741AD2A09C8E3005A0B51 /* Info.plist */,
 				96D741A52A09C8DF005A0B51 /* Project_10.xcdatamodeld */,
 			);
 			path = Project_10;
-			sourceTree = "<group>";
-		};
-		96D741D82A09E3D7005A0B51 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,6 +145,7 @@
 				96D741B62A09CAAB005A0B51 /* PersonCell.swift in Sources */,
 				96D741DA2A09E3E4005A0B51 /* View.swift in Sources */,
 				96D7419D2A09C8DF005A0B51 /* AppDelegate.swift in Sources */,
+				96D742492A0B45D0005A0B51 /* Person.swift in Sources */,
 				96D741A72A09C8DF005A0B51 /* Project_10.xcdatamodeld in Sources */,
 				96D7419F2A09C8DF005A0B51 /* SceneDelegate.swift in Sources */,
 			);
