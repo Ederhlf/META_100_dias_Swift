@@ -43,7 +43,7 @@ extension PersonCell {
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: 60),
+            imageView.heightAnchor.constraint(equalToConstant: 100),
             imageView.rightAnchor.constraint(equalTo: rightAnchor)
         ])
     }
