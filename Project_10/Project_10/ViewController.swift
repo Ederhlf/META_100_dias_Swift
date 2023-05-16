@@ -3,7 +3,8 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var myView: View?
-    
+    let defaults = UserDefaults.standard
+
     override func loadView() {
         super.loadView()
         myView = View()
@@ -19,7 +20,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             target: self,
             action: #selector(addNewPerson)
         )
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let savedPeople = defaults.object(forKey: "people") as? Data {
+            if let decodePeople = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedPeople) {
+                myView?.people = decodePeople as! [Person]
+                myView?.collectionView?.reloadData()
+            }
+        }
     }
     
     @objc func addNewPerson() {
@@ -43,12 +53,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let person = Person(name: "Eber", image: imageName)
         myView?.people.append(person)
         myView?.collectionView?.reloadData()
-        
+        self.saveData()
+
         dismiss(animated: true)
     }
 
-    func alertSetUp() {
-     
+    func saveData() {
+        if let saveData = try? NSKeyedArchiver.archivedData(withRootObject: myView?.people, requiringSecureCoding: false) {
+            defaults.setValue(saveData, forKey: "people")
+        }
     }
 }
 
@@ -64,6 +77,7 @@ extension ViewController: PersonDelegate {
             person.name = newName
 
             self?.myView?.collectionView!.reloadData()
+            self?.saveData()
         })
 
         present(ac, animated: true)
