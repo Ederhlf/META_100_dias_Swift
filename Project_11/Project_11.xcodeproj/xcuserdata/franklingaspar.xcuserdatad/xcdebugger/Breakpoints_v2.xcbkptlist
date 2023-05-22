@@ -14,8 +14,13 @@
             filePath = "Project_11/GameScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+<<<<<<< Updated upstream
             startingLineNumber = "175"
             endingLineNumber = "175"
+=======
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+>>>>>>> Stashed changes
             landmarkName = "ballsName()"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +35,13 @@
             filePath = "Project_11/GameScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+<<<<<<< Updated upstream
             startingLineNumber = "163"
             endingLineNumber = "163"
+=======
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+>>>>>>> Stashed changes
             landmarkName = "ballsName()"
             landmarkType = "7">
          </BreakpointContent>

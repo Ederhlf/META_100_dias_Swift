@@ -25,7 +25,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "background.jpg")
         background.position = CGPoint(x: 512, y: 384)
+<<<<<<< Updated upstream
         background.blendMode = .replace
+=======
+        // Blend - mesclagem Modo
+        background.blendMode = .replace
+        // posicao da image = posicionamento de nós
+>>>>>>> Stashed changes
         background.zPosition = -1
         addChild(background)
 
@@ -179,6 +185,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func boxAutodemention(location: CGPoint) -> SKSpriteNode {
         let size = CGSize(width: Int.random(in: 16...128), height: 16)
+<<<<<<< Updated upstream
         let box = SKSpriteNode(color: UIColor(
                                 red: CGFloat.random(in: 0...1),
                                 green: CGFloat.random(in: 0...1),
@@ -188,6 +195,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         box.zRotation = CGFloat.random(in: 0...3)
         box.position = location
 // body Down
+=======
+        let box = SKSpriteNode(
+              color: UIColor(
+                  red: CGFloat.random(in: 0...1),
+                  green: CGFloat.random(in: 0...1),
+                  blue: CGFloat.random(in: 0...1),
+                  alpha: 1
+               ), size: size)
+        
+        box.zRotation = CGFloat.random(in: 0...3)
+        box.position = location
+
+        // body Down
+>>>>>>> Stashed changes
         box.physicsBody = SKPhysicsBody(rectangleOf: box.size)
         box.physicsBody?.isDynamic = false
         
