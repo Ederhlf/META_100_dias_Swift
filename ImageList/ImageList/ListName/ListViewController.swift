@@ -1,11 +1,13 @@
 
 import UIKit
+import Foundation
 
 class ListNameViewController: UIViewController {
 
     private var myView: ListNameView?
     private var myModel: ListNameViewModel?
-    
+    var data = UserDefaults.standard
+
     override func loadView() {
         super.loadView()
         myView = ListNameView()
@@ -30,7 +32,12 @@ class ListNameViewController: UIViewController {
 
 extension ListNameViewController: ViewDelegate {
     func selectedView(imageName: String) {
-        let vc = PhotoViewController(imageName: imageName)
+        DataUser.shared
+        var views = 1
+         views += data.integer(forKey: imageName)
+        data.set( views , forKey: imageName)
+     
+        let vc = PhotoViewController(imageName: imageName, views: views)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

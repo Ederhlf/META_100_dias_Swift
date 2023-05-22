@@ -6,18 +6,21 @@ class PhotoViewController: UIViewController {
     // MARK: Properties
     var imageName: String?
     var imageView = UIImageView()
-   
+    var views: Int?
+    
     // MARK: Init
-    convenience init(imageName: String) {
+    convenience init(imageName: String, views: Int) {
         self.init()
         self.imageName = imageName
+        self.views = views
     }
     
     // MARK: Life cicle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = imageName
+        title = "Visualizado: \(views ?? Int())"
+        
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .action,
