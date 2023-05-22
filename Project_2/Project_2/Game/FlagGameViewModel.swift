@@ -3,15 +3,24 @@ import Foundation
 import UIKit
 
 
-class ViewModel {
+class FlagGameViewModel {
     var numberOfAttempts: Int = 0
     var score: Int = 0
     var acertos: Int = 0
     var erros: Int = 0
+    let userDafault = UserDefaults.standard
+    var challengers = [Challengers]()
     var countriesNames: [String] = [
         "france", "germany", "ireland", "italy",
         "monaco", "russia", "spain", "uk", "us"
     ]
+    
+    
+    
+    func refreshist() {
+        challengers.removeAll()
+        challengers = getChallengersList()
+    }
     
     func selectedFlagReaction(btn: UIButton, selected: Bool) {
         btn.layer.cornerRadius = 10
@@ -47,7 +56,7 @@ class ViewModel {
         vc.present(alert, animated: true, completion: nil)
     }
     
-    func alertChallengeFinished(vc: UIViewController, completion: @escaping() -> Void) {
+    func alertChallengeFinished(vc: UIViewController, completion: @escaping(String) -> Void) {
         let alert = UIAlertController(
             title: "Desafio terminado",
             message: "Tentar novamente? \n Acertos: \(acertos)  Erros: \(erros)",
@@ -60,7 +69,17 @@ class ViewModel {
             handler: {_ in
                 self.score = 0
                 self.numberOfAttempts = 0
-                completion()
+                completion("ok")
+            }
+        )
+        
+        let actionSocore = UIAlertAction(
+            title: "Ver Pontos",
+            style: .default,
+            handler: {_ in
+                self.score = 0
+                self.numberOfAttempts = 0
+                completion("Ver Pontos")
             }
         )
         
@@ -73,6 +92,8 @@ class ViewModel {
         
         alert.addAction(actionCancel)
         alert.addAction(actionOk)
+        alert.addAction(actionSocore)
+
         vc.present(alert, animated: true, completion: nil)
     }
     
@@ -92,6 +113,36 @@ class ViewModel {
     func sum(sequence number: Int) -> Int {
         numberOfAttempts += number
         return numberOfAttempts
+    }
+    
+    func saveChallengers(user: String) {
+        let jSon = JSONEncoder()
+        let newUser = Challengers(name: user, fail: erros, gain: acertos)
+        challengers.append(newUser)
+            do {
+                let save = try jSon.encode(challengers) as? Data
+                userDafault.set(save, forKey: "challengersList")
+            } catch  {
+             print("error")
+        }
+    }
+    
+    func getChallengersList() -> [Challengers] {
+       challengers.removeAll()
+       let jSonDecoder = JSONDecoder()
+        
+        if let saved = userDafault.object(forKey: "challengersList")  as? Data {
+
+            do {
+                challengers = (try? jSonDecoder.decode([Challengers].self, from: saved)) ?? []
+                return challengers
+
+            } catch  {
+                print("error")
+                return []
+            }
+        }
+        return []
     }
 }
 

@@ -7,13 +7,13 @@ protocol ViewDelegate: AnyObject {
     func nextChallenge()
 }
 
-class View: UIView {
+class FlagGameView: UIView {
     // MARK: Views
     var firstFlagBtn = UIButton().specsDefault()
     var secondFlagBtn = UIButton().specsDefault()
     var thirdFlagBtn = UIButton().specsDefault()
     var nextBtn = UIButton()
-    
+        
     // MARK: Properties
     var delegate: ViewDelegate?
     var flagsBtns: [UIButton] = [UIButton]()
@@ -123,7 +123,7 @@ class View: UIView {
 }
 
 // MARK: - First BTN
-extension View {
+extension FlagGameView {
     func configureFirstFlagBtnLayout() {
         addSubview(firstFlagBtn)
         
@@ -150,7 +150,7 @@ extension View {
 }
 
 // MARK: - Second BTN
-extension View {
+extension FlagGameView {
     func configureSecondFlagBtnLayout() {
         addSubview(secondFlagBtn)
         
@@ -177,7 +177,7 @@ extension View {
 }
 
 // MARK: - Third BTN
-extension View {
+extension FlagGameView {
     func configureThirdFlagBtnLayout() {
         addSubview(thirdFlagBtn)
         
@@ -204,7 +204,7 @@ extension View {
 }
 
 // MARK: - Next BTN
-extension View {
+extension FlagGameView {
     func configureNextBtnLayout() {
         addSubview(nextBtn)
         
