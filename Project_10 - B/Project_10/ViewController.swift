@@ -25,12 +25,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let savedPeople = defaults.object(forKey: "people") as? Data {
-            let jsonDecoder = JSONDecoder()
-       
-            do {
-                myView?.people = try jsonDecoder.decode([Person].self, from: savedPeople)
-            } catch {
-                print("Failed to load people")
+            if let decodePeople = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedPeople) {
+                myView?.people = decodePeople as! [Person]
+                myView?.collectionView?.reloadData()
             }
         }
     }
@@ -62,12 +59,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     func saveData() {
-        let jsonEncode = JSONEncoder()
-        
-        if let saveData = try? jsonEncode.encode(myView?.people) {
+        if let saveData = try? NSKeyedArchiver.archivedData(withRootObject: myView?.people as Any, requiringSecureCoding: false) {
             defaults.setValue(saveData, forKey: "people")
-        } else {
-            print("Ocorreu uma falha")
         }
     }
 }

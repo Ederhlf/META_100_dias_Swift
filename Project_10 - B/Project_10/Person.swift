@@ -2,7 +2,7 @@
 import Foundation
 import UIKit
 
-class Person: NSObject, Codable {
+class Person: NSObject, NSCoding {
     
     var name: String
     var image: String
