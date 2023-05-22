@@ -1,23 +1,32 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    var myView: View?
-    var myModel: ViewModel?
-    var currentTag: Int?
+class FlagGameViewController: UIViewController {
+   private var myView: FlagGameView?
+   private var myModel: FlagGameViewModel?
+   private var currentTag: Int?
+   private var user: String?
+    
     
     override func loadView() {
         super.loadView()
-        myView = View()
+        myView = FlagGameView()
         myView?.delegate = self
         
         view = myView
-        myModel = ViewModel()
+        myModel = FlagGameViewModel()
     }
+    
+    convenience init(userName: String) {
+        self.init()
+        self.user = userName
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        myModel?.refreshist()
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "0/10", style: .plain, target: nil, action: nil)
         navigationItem.leftBarButtonItem?.tintColor = .black
@@ -35,12 +44,22 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: ViewDelegate {
+// MARK: DELEGATE
+extension FlagGameViewController: ViewDelegate {
     func nextChallenge() {
         if myModel?.numberOfAttempts == 10 {
-            myModel?.alertChallengeFinished(vc: self) {
+            myModel?.alertChallengeFinished(vc: self) { title in
                 self.navigationItem.leftBarButtonItem?.title = "\(self.myModel!.score)/10"
                 self.navigationItem.rightBarButtonItem?.title = "Score: \(self.myModel!.score)"
+                    self.myModel?.saveChallengers(user: self.user!)
+
+                if title == "Ver Pontos" {
+                    let vc = UINavigationController(rootViewController: ScoreListViewController()) 
+                    vc.modalPresentationStyle = .popover
+                    self.present(vc, animated: true, completion: nil)
+                }
+                self.myModel?.erros = 0
+                self.myModel?.acertos = 0
             }
         } else {
             myModel?.clearborderColor(btn: myView!.firstFlagBtn)
@@ -72,13 +91,13 @@ extension ViewController: ViewDelegate {
         
         myModel?.checkButtonTag(tag: btnTag, random: currentTag!) { bool in
             if bool {
-                myModel?.alertries(vc: self, message: "Parabéns, voce acertou: +1") {
+                myModel?.alertries(vc: self, message: "Parabéns \(user!), voce acertou: +1") {
                 self.navigationItem.leftBarButtonItem?.title = "\(self.myModel?.sum(sequence: +1) ?? Int())/10"
                 self.navigationItem.rightBarButtonItem?.title = "Score: \(self.myModel!.score)"
                 }
            
             } else  {
-                myModel?.alertries(vc: self, message: "Bandeira errada: -1") {
+                myModel?.alertries(vc: self, message: "Bandeira errada, \(user): -1") {
                 self.navigationItem.leftBarButtonItem?.title = "\(self.myModel?.sum(sequence: +1) ?? Int())/10"
                 self.navigationItem.rightBarButtonItem?.title = "Score: \(self.myModel!.score)"
                 }
