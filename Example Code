@@ -394,4 +394,7 @@ var name = "Tim McGraw"
 // Nenhum código de interface do usuário deve ser executado em um thread em segundo plano.
 
 
+ //É o trabalho de NSKeyedArchiverconverter NSCodingobjetos em arquivos Data.
+Para ir para o outro lado - para converter de Datapara tipos personalizados - você deve usar NSKeyedUnarchiver.
+
 
