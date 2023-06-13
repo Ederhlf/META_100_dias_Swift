@@ -42,6 +42,15 @@ class FlagGameViewController: UIViewController {
         title = myView?.flagNames[number].uppercased()
         currentTag = number
     }
+    
+    func buttonScaleBack(button: UIButton) {
+        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn) {
+            button.transform = CGAffineTransform(scaleX: 1, y: 1)
+
+        } completion: { (Bool) in
+            
+        }
+    }
 }
 
 // MARK: DELEGATE
@@ -72,35 +81,42 @@ extension FlagGameViewController: ViewDelegate {
         }
     }
     
-    func tapOnFlag(btnTag: Int) {
+    func tapOnFlag(btnTag: UIButton) {
         let total: Int = (myView?.flagsBtns.count)!
         myView?.isEnableBtn(isEnable: false)
         
-        for number in 0..<total {
-            if  btnTag == number && btnTag == currentTag || number == currentTag {
-                let selecteBtn = myView?.flagsBtns[number]
-                
-                myModel?.selectedFlagReaction(btn: selecteBtn!, selected: true)
-                
-            } else if btnTag != currentTag {
-                let notSelecteBtn = myView?.flagsBtns[number]
-                
-                myModel?.selectedFlagReaction(btn: notSelecteBtn!, selected: false)
+        UIView.animate(withDuration: 1, delay: 0.5, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.4, options: .curveEaseInOut) {
+            btnTag.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
+
+        } completion: { [self] (Bool) in
+            myModel?.checkButtonTag(tag: btnTag.tag, random: currentTag!) { bool in
+                if bool {
+                    myModel?.alertries(vc: self, message: "Parabéns \(user!), voce acertou: +1") {
+                    self.navigationItem.leftBarButtonItem?.title = "\(self.myModel?.sum(sequence: +1) ?? Int())/10"
+                    self.navigationItem.rightBarButtonItem?.title = "Score: \(self.myModel!.score)"
+                        buttonScaleBack(button: btnTag)
+                    }
+               
+                } else  {
+                    myModel?.alertries(vc: self, message: "Bandeira errada, \(user): -1") {
+                    self.navigationItem.leftBarButtonItem?.title = "\(self.myModel?.sum(sequence: +1) ?? Int())/10"
+                    self.navigationItem.rightBarButtonItem?.title = "Score: \(self.myModel!.score)"
+                        buttonScaleBack(button: btnTag)
+                    }
+                }
             }
         }
-        
-        myModel?.checkButtonTag(tag: btnTag, random: currentTag!) { bool in
-            if bool {
-                myModel?.alertries(vc: self, message: "Parabéns \(user!), voce acertou: +1") {
-                self.navigationItem.leftBarButtonItem?.title = "\(self.myModel?.sum(sequence: +1) ?? Int())/10"
-                self.navigationItem.rightBarButtonItem?.title = "Score: \(self.myModel!.score)"
-                }
-           
-            } else  {
-                myModel?.alertries(vc: self, message: "Bandeira errada, \(user): -1") {
-                self.navigationItem.leftBarButtonItem?.title = "\(self.myModel?.sum(sequence: +1) ?? Int())/10"
-                self.navigationItem.rightBarButtonItem?.title = "Score: \(self.myModel!.score)"
-                }
+
+        for number in 0..<total {
+            if  btnTag.tag == number && btnTag.tag == currentTag || number == currentTag {
+//                    let selecteBtn = myView?.flagsBtns[number]
+                
+                myModel?.selectedFlagReaction(btn: btnTag, selected: true)
+                
+            } else if btnTag.tag != currentTag {
+//                    let notSelecteBtn = myView?.flagsBtns[number]
+                
+                myModel?.selectedFlagReaction(btn: btnTag, selected: false)
             }
         }
     }

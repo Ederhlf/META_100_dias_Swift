@@ -3,7 +3,7 @@ import Foundation
 import UIKit
 
 protocol ViewDelegate: AnyObject {
-    func tapOnFlag(btnTag: Int)
+    func tapOnFlag(btnTag: UIButton)
     func nextChallenge()
 }
 
@@ -58,7 +58,7 @@ class FlagGameView: UIView {
     }
     
     @objc func tapOnFlag(_ sender: UIButton) {
-        delegate?.tapOnFlag(btnTag: sender.tag)
+        delegate?.tapOnFlag(btnTag: sender)
     }
     
     @objc func nextChallenge() {

@@ -23,8 +23,8 @@ class FlagGameViewModel {
     }
     
     func selectedFlagReaction(btn: UIButton, selected: Bool) {
-        btn.layer.cornerRadius = 10
-        btn.layer.borderWidth = 10
+        btn.layer.cornerRadius = 5
+        btn.layer.borderWidth = 5
         if selected {
             btn.layer.borderColor = UIColor.green.cgColor
 
@@ -35,6 +35,7 @@ class FlagGameViewModel {
     
     func clearborderColor(btn: UIButton) {
         btn.layer.borderColor = UIColor.clear.cgColor
+        btn.transform = CGAffineTransform(scaleX: 1, y: 1)
     }
     
     func alertries(vc: UIViewController, message: String, completion: @escaping() -> Void) {
