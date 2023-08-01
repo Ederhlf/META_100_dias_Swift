@@ -398,3 +398,13 @@ var name = "Tim McGraw"
 Para ir para o outro lado - para converter de Datapara tipos personalizados - você deve usar NSKeyedUnarchiver.
 
 
+Como permitir que o usuário selecione um intervalo de valores usando UISlider.
+Como mover, girar e dimensionar exibições usando CGAffineTransform.
+Salvando imagens de volta na biblioteca de fotos do usuário chamando a UIImageWriteToSavedPhotosAlbum()função.
+Crie contextos de imagem principal usando CIContext, e crie e aplique filtros de imagem principal usando CIFilter.
+Alterando as imagens do sprite sem mover o sprite, usando SKTexture.
+Cortar um sprite para que apenas parte dele fique visível, usando SKCropNode.
+Mais SKActions, incluindo moveBy(x:y:), wait(forDuration:), sequence()e até mesmo como executar encerramentos personalizados usando run(block:).
+O asyncAfter()método de GCD, que faz com que o código seja executado após um atraso.
+Além disso, você teve mais prática usando UIImagePickerController, para selecionar fotos da biblioteca de fotos do usuário. Estaremos usando isso novamente - é um componente realmente útil para se ter em seu arsenal!
+
