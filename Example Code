@@ -408,3 +408,18 @@ Mais SKActions, incluindo moveBy(x:y:), wait(forDuration:), sequence()e até mes
 O asyncAfter()método de GCD, que faz com que o código seja executado após um atraso.
 Além disso, você teve mais prática usando UIImagePickerController, para selecionar fotos da biblioteca de fotos do usuário. Estaremos usando isso novamente - é um componente realmente útil para se ter em seu arsenal!
 
+
+Como usar Timer para acionar um método de repetição a cada poucos segundos. Lembre-se de chamar invalidate()seu tempo quando quiser que ele pare!
+No SpriteKit, você aprendeu a usar o advanceSimulationTime()método para forçar um sistema de partículas a avançar um determinado número de segundos para que pareça que já existe há algum tempo.
+Usamos o SKPhysicsBody(texture:)inicializador para obter física perfeita para pixels. Isso é computacionalmente caro, então você deve usá-lo apenas quando estritamente necessário.
+Usamos as propriedades linearDampinge de para forçar os sprites a manter sua velocidade e rotação, em vez de desacelerar com o tempo - afinal, o projeto 23 foi ambientado no espaço sideral!angularDampingSKPhysicsBody
+
+
+
+O problema é que eles estão esquecendo que isso Timernão oferece disparo preciso e pode se desviar mais cedo ou mais tarde do que as atualizações solicitadas, e também não tem ideia sobre redesenhos de tela e, portanto, poderia disparar alegremente 10ms após um redesenho de tela ter acontecido - e quando você está trabalhando em frames de 16.666ms, 10ms é muito tempo!
+
+Uma solução mais inteligente e rápida é a CADisplayLinkclasse, que chama automaticamente um método que você define assim que acontece um redesenho da tela, assim você sempre tem tempo máximo para executar seu código de atualização. É extremamente simples de usar – aqui está um exemplo para você começar:
+
+let displayLink = CADisplayLink(target: self, selector: #selector(update))
+displayLink.add(to: .current, forMode: .common)
+

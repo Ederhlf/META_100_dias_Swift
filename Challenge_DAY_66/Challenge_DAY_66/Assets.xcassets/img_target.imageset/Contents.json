@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "kisspng-computer-icons-scalable-vector-graphics-clip-art-c-pc-semi-circle-icon-svg-png-icon-free-download-2-5b70e8d40ba843.4131804515341262920478.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "kisspng-computer-icons-scalable-vector-graphics-clip-art-c-pc-semi-circle-icon-svg-png-icon-free-download-2-5b70e8d40ba843.4131804515341262920478-1.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "kisspng-computer-icons-scalable-vector-graphics-clip-art-c-pc-semi-circle-icon-svg-png-icon-free-download-2-5b70e8d40ba843.4131804515341262920478-2.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
