@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E3DEA6E2A9635AE00EFB3CA /* ChangeColorShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 3E3DEA6D2A9635AE00EFB3CA /* ChangeColorShader.fsh */; };
+		3E3DEA702A977C8500EFB3CA /* slotGlowBad.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E3DEA6F2A977C8500EFB3CA /* slotGlowBad.png */; };
 		963741B92A89327C007B98BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963741B82A89327C007B98BC /* AppDelegate.swift */; };
 		963741BB2A89327C007B98BC /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 963741BA2A89327C007B98BC /* GameScene.sks */; };
 		963741BD2A89327C007B98BC /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 963741BC2A89327C007B98BC /* Actions.sks */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E3DEA6D2A9635AE00EFB3CA /* ChangeColorShader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = ChangeColorShader.fsh; sourceTree = "<group>"; };
+		3E3DEA6F2A977C8500EFB3CA /* slotGlowBad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = slotGlowBad.png; path = ../../Project_11/Project_11/Content/slotGlowBad.png; sourceTree = "<group>"; };
 		963741B52A89327C007B98BC /* Challenge_DAY_66.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge_DAY_66.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		963741B82A89327C007B98BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		963741BA2A89327C007B98BC /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -62,9 +66,11 @@
 				963741BA2A89327C007B98BC /* GameScene.sks */,
 				963741BC2A89327C007B98BC /* Actions.sks */,
 				963741BE2A89327C007B98BC /* GameScene.swift */,
+				3E3DEA6D2A9635AE00EFB3CA /* ChangeColorShader.fsh */,
 				963741C02A89327C007B98BC /* GameViewController.swift */,
 				963741C22A89327C007B98BC /* Main.storyboard */,
 				963741C52A89327E007B98BC /* Assets.xcassets */,
+				3E3DEA6F2A977C8500EFB3CA /* slotGlowBad.png */,
 				963741C72A89327E007B98BC /* Info.plist */,
 			);
 			path = Challenge_DAY_66;
@@ -129,7 +135,9 @@
 			files = (
 				963741C42A89327C007B98BC /* Main.storyboard in Resources */,
 				963741BB2A89327C007B98BC /* GameScene.sks in Resources */,
+				3E3DEA702A977C8500EFB3CA /* slotGlowBad.png in Resources */,
 				963741C62A89327E007B98BC /* Assets.xcassets in Resources */,
+				3E3DEA6E2A9635AE00EFB3CA /* ChangeColorShader.fsh in Resources */,
 				963741BD2A89327C007B98BC /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

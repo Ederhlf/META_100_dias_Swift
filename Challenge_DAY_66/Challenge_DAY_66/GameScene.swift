@@ -54,7 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func creatingTarget(positionY: CGFloat) -> SKSpriteNode {
         
-        var target = SKSpriteNode(imageNamed: "img_target")
+        var target = SKSpriteNode(imageNamed: "slotGlowBad")
         target.position = CGPoint(x: UIScreen.main.bounds.width / 1.5, y: positionY)
         addChild(target)
         target.size = CGSize(width: 100, height: 100)
@@ -67,8 +67,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         spriteNode.physicsBody?.velocity = CGVector(dx: -500, dy: 0)
         spriteNode.physicsBody?.contactTestBitMask = 1
 
-        spriteNode.physicsBody?.angularVelocity = 5
+        spriteNode.physicsBody?.angularVelocity = 1
         spriteNode.physicsBody?.linearDamping = 0
         spriteNode.physicsBody?.angularDamping = 0
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        var location = touch.location(in: self)
+        
+        for target in targetsIMages {
+            if target.contains(location) {
+                print("toque")
+        
+                let flipUpAction = SKAction.scaleY(to: 0.0, duration: 0.07) // Diminui a altura
+                let flipDownAction = SKAction.scaleY(to: 1.0, duration: 0.07) // Aumenta a altura
+                            
+                let sequenceAction = SKAction.sequence([flipUpAction, flipDownAction])
+                let repeatAction = SKAction.repeat(sequenceAction, count: 5)
+
+                target.run(repeatAction)
+
+            }
+        }
+    }
+    
+    
+    
 }
