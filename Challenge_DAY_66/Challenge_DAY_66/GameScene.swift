@@ -54,7 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func creatingTarget(positionY: CGFloat) -> SKSpriteNode {
         
-        var target = SKSpriteNode(imageNamed: "slotGlowBad")
+        var target = SKSpriteNode(imageNamed: "lady_black")
         target.position = CGPoint(x: UIScreen.main.bounds.width / 1.5, y: positionY)
         addChild(target)
         target.size = CGSize(width: 100, height: 100)
@@ -63,11 +63,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func linearvelocity(spriteNode: SKSpriteNode) {
+        var velocityDirection = [-500, 500]
         spriteNode.physicsBody = SKPhysicsBody(texture: spriteNode.texture!, size: spriteNode.size)
-        spriteNode.physicsBody?.velocity = CGVector(dx: -500, dy: 0)
+        spriteNode.physicsBody?.velocity = CGVector(dx: velocityDirection.randomElement()!, dy: 0)
         spriteNode.physicsBody?.contactTestBitMask = 1
 
-        spriteNode.physicsBody?.angularVelocity = 1
+//        spriteNode.physicsBody?.angularVelocity = 1
         spriteNode.physicsBody?.linearDamping = 0
         spriteNode.physicsBody?.angularDamping = 0
     }
@@ -79,19 +80,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for target in targetsIMages {
             if target.contains(location) {
                 print("toque")
-        
+
+                let rotation = SKAction.rotate(byAngle: .pi / 1.5, duration: 0.07)
                 let flipUpAction = SKAction.scaleY(to: 0.0, duration: 0.07) // Diminui a altura
                 let flipDownAction = SKAction.scaleY(to: 1.0, duration: 0.07) // Aumenta a altura
-                            
-                let sequenceAction = SKAction.sequence([flipUpAction, flipDownAction])
-                let repeatAction = SKAction.repeat(sequenceAction, count: 5)
+                let sequenceAction = SKAction.sequence([flipUpAction, flipDownAction, rotation ])
+                let repeatAction = SKAction.repeat(sequenceAction, count: 6)
 
-                target.run(repeatAction)
+                target.run(repeatAction) { [self]
+                    target.physicsBody?.angularVelocity = 0
 
+                }
             }
         }
     }
-    
-    
-    
 }
